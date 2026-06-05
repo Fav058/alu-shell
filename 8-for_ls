@@ -1,0 +1,10 @@
+#!/usr/bin/env bash
+# List files removing prefix before first dash
+
+for file in *
+do
+  if [ -e "$file" ]
+  then
+    echo "${file#*-}"
+  fi
+done
