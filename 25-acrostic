@@ -1,2 +1,2 @@
 #!/bin/bash
-<READ COMMAND THAT SOLVES THE TASK>
+while read line; do echo "$line" | cut -c1; done | tr -d '\n' | tr '[:lower:]' '[:upper:]'; echo
