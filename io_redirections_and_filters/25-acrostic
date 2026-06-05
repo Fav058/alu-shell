@@ -1,3 +1,2 @@
 #!/bin/bash
-cut -c1 | tr -d '\n'
-echo
+awk '{printf toupper(substr($0,1,1))} END {print ""}'
