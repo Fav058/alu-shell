@@ -1,2 +1,6 @@
 #!/bin/bash
-while read line; do echo "$line" | cut -c1; done | tr -d '\n' | tr '[:lower:]' '[:upper:]'; echo
+while IFS= read -r line
+do
+    printf "%s" "${line:0:1}"
+done | tr '[:lower:]' '[:upper:]'
+echo
