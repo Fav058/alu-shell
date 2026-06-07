@@ -1,4 +1,6 @@
 #!/usr/bin/env bash
+# init script to manage manage_my_process and its PID file
+
 PID_FILE="/var/run/my_process.pid"
 SCRIPT_PATH="./manage_my_process"
 
@@ -19,6 +21,7 @@ stop() {
 
 restart() {
   stop
+  rm -f "$PID_FILE"
   start
   echo "manage_my_process restarted"
 }
