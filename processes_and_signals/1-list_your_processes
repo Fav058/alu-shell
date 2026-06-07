@@ -1,0 +1,4 @@
+#!/usr/bin/env bash
+# Lists current processes with a hierarchy tree
+ps -eo user,pid,%cpu,%mem,vsz,rss,tty,stat,lstart,time,comm --forest
+
