@@ -1,0 +1,7 @@
+#!/usr/bin/env bash
+# Stops 4-to_infinity_and_beyond using kill
+pids="$(pgrep -f "4-to_infinity_and_beyond" 2>/dev/null || true)"
+if [ -n "$pids" ]; then
+  kill $pids 2>/dev/null || true
+fi
+
