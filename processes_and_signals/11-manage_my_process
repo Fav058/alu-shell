@@ -1,9 +1,9 @@
 #!/usr/bin/env bash
 PID_FILE="/var/run/my_process.pid"
-SCRIPT="./manage_my_process"
+SCRIPT_PATH="./manage_my_process"
 
 start() {
-  "$SCRIPT" &
+  "$SCRIPT_PATH" &
   echo $! > "$PID_FILE"
   echo "manage_my_process started"
 }
