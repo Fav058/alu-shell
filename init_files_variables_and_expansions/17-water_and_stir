@@ -1,0 +1,67 @@
+#!/bin/bash
+
+convert_to_decimal() {
+    local number="$1"
+    local base="$2"
+    local decimal=0
+    local i digit
+
+    for ((i=0; i<${#number}; i++)); do
+        digit="${number:i:1}"
+        case "$base" in
+            water)
+                case "$digit" in
+                    w) digit=0 ;;
+                    a) digit=1 ;;
+                    t) digit=2 ;;
+                    e) digit=3 ;;
+                    r) digit=4 ;;
+                esac
+                ;;
+            stir.)
+                case "$digit" in
+                    s) digit=0 ;;
+                    t) digit=1 ;;
+                    i) digit=2 ;;
+                    r) digit=3 ;;
+                    .) digit=4 ;;
+                esac
+                ;;
+        esac
+        decimal=$((decimal * 5 + digit))
+    done
+
+    echo "$decimal"
+}
+
+convert_to_bestchol() {
+    local number="$1"
+    local result=""
+
+    if [ "$number" -eq 0 ]; then
+        echo "b"
+        return
+    fi
+
+    while [ "$number" -gt 0 ]; do
+        case $((number % 8)) in
+            0) result="b$result" ;;
+            1) result="e$result" ;;
+            2) result="s$result" ;;
+            3) result="t$result" ;;
+            4) result="c$result" ;;
+            5) result="h$result" ;;
+            6) result="o$result" ;;
+            7) result="l$result" ;;
+        esac
+        number=$((number / 8))
+    done
+
+    echo "$result"
+}
+
+water_decimal=$(convert_to_decimal "$WATER" water)
+stir_decimal=$(convert_to_decimal "$STIR" stir.)
+total=$((water_decimal + stir_decimal))
+
+convert_to_bestchol "$total"
